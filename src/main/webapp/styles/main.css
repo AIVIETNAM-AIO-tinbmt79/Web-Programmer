@@ -22,3 +22,21 @@ br {
 }
 #submit {
     margin-left: 0.5em; }
+
+/* Định dạng các nhãn form cho thẳng hàng */
+label {
+    float: left;
+    width: 16em;          /* Tăng lên 16em hoặc 17em để đủ chứa các câu dài */
+    padding-bottom: 0.5em;
+    font-weight: bold;
+}
+
+br {
+    clear: left;
+}
+
+ul {
+    margin: 0;
+    padding-left: 16em;   /* Phải khớp với độ rộng của label bên trên */
+    list-style-type: disc;
+}

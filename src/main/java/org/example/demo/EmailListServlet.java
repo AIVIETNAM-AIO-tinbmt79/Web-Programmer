@@ -1,9 +1,11 @@
 package org.example.demo;
 
 import java.io.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import org.example.demo.business.Survey;
 import org.example.demo.business.User;
 
 public class EmailListServlet extends HttpServlet  {
@@ -28,11 +30,20 @@ public class EmailListServlet extends HttpServlet  {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
-            String phoneNumber = request.getParameter("phoneNumber");
+            String dob = request.getParameter("dob");
+            String hearAboutUs = request.getParameter("hearAboutUs");
+            String cdOffers = request.getParameter("cdOffers");
+            String specialOffers = request.getParameter("specialOffers");
+
+            String[] contactMethods = request.getParameterValues("method");
+
             // store data in User object and save User object in db
-            User user = new User(firstName, lastName, email, phoneNumber);
+            User user = new User(firstName, lastName, email, dob);
+            Survey survey = new Survey(email, hearAboutUs, cdOffers, specialOffers, contactMethods);
+
             // set User object in request object and set URL
             request.setAttribute("user", user);
+            request.setAttribute("survey", survey);
             url = "/thanks.jsp";   // the "thanks" page
         }
 

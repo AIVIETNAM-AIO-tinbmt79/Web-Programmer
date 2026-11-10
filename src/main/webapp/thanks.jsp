@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -17,8 +18,31 @@
 <span>${user.firstName}</span><br>
 <label>Last Name:</label>
 <span>${user.lastName}</span><br>
-<label>Phone Number </label>
-<span>${user.phoneNumber}</span>
+<label>Date of birth</label>
+<span>${user.dob}</span><br>
+
+<label>Your way of finding us:</label>
+<span>${survey.hearAboutUs}</span><br>
+
+<label>CDs offers:</label>
+<span>
+    <c:if test="${not empty survey.cdOffers}">on</c:if>
+    <c:if test="${empty survey.cdOffers}">off</c:if>
+</span><br>
+
+<label>Special offers:</label>
+<span>
+    <c:if test="${not empty survey.specialOffers}">on</c:if>
+    <c:if test="${empty survey.specialOffers}">off</c:if>
+</span><br>
+
+
+<label>Your contact method:</label>
+<ul>
+    <c:forEach var="method" items="${survey.contactMethods}">
+        <span>${method}</span>
+    </c:forEach>
+</ul><br>
 
 <p>To enter another email address, click on the Back
     button in your browser or the Return button shown
