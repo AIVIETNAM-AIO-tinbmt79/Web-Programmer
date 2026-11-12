@@ -2,34 +2,25 @@ package org.example.demo.business;
 
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private String phoneNumber;
 
     public User() {
         firstName = "";
         lastName = "";
         email = "";
-        phoneNumber ="";
     }
 
-    public User(String firstName, String lastName, String email, String phoneNumber) {
+    public User(String firstName, String lastName, String email, String dob) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.phoneNumber = phoneNumber;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public String getFirstName() {
         return firstName;
