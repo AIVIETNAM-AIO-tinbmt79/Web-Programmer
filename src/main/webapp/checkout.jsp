@@ -11,9 +11,7 @@
 
 <h1>Checkout</h1>
 
-<h2>Cảm ơn bạn đã lựa chọn sản phẩm</h2>
-
-<p>Đơn hàng của bạn đã được ghi nhận thành công.</p>
+<h2 style="color:blue">Thank you for your shopping</h2>
 
 <%-- Xóa giỏ hàng trong Session sau khi thanh toán thành công --%>
 <c:remove var="cart" scope="session"/>

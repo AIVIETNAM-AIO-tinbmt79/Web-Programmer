@@ -14,8 +14,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests --no-transfer-progress
 
 # Stage 2: Runtime với Tomcat 9 tương thích JDK 21+
-FROM tomcat:9.0-jdk21-temurin
-
+FROM tomcat:9.0.12-jre8
 # Xóa các app mặc định của Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
 
