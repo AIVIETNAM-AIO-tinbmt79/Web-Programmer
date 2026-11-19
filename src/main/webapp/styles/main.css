@@ -1,0 +1,23 @@
+/* Viền và định dạng cho bảng */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Viền cho ô tiêu đề (th) và ô nội dung (td) */
+th, td {
+    border: 1px solid #cccccc;
+    padding: 8px 12px;
+}
+
+/* Kiểu viền và nền riêng cho hàng tiêu đề */
+th {
+    background-color: #f2f2f2;
+    border-bottom: 2px solid #000000;
+}
+
+/* Căn phải cho cột Price */
+.right {
+    text-align: right;
+}
