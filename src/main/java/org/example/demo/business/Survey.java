@@ -3,6 +3,9 @@ package org.example.demo.business;
 import java.io.Serializable;
 
 public class Survey implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String email;
     private String hearAboutUs;
     private String cdOffers;
@@ -17,12 +20,17 @@ public class Survey implements Serializable {
         contactMethods = new String[0];
     }
 
-    public Survey(String email, String hearAboutUs, String cdOffers, String specialOffers, String[] contactMethods){
+    public Survey(String email, String hearAboutUs,
+                  String cdOffers, String specialOffers,
+                  String[] contactMethods) {
         this.email = email;
         this.hearAboutUs = hearAboutUs;
         this.cdOffers = cdOffers;
         this.specialOffers = specialOffers;
-        this.contactMethods = contactMethods;
+
+        this.contactMethods = contactMethods == null
+                ? new String[0]
+                : contactMethods;
     }
 
     public String getEmail() {
@@ -62,6 +70,8 @@ public class Survey implements Serializable {
     }
 
     public void setContactMethods(String[] contactMethods) {
-        this.contactMethods = contactMethods;
+        this.contactMethods = contactMethods == null
+                ? new String[0]
+                : contactMethods;
     }
 }
