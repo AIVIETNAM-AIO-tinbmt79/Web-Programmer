@@ -1,24 +1,26 @@
-# Stage 1: Build bằng Maven & JDK 24
+
+# Stage 1: Build bằng Maven và JDK 24
 FROM maven:3.9-eclipse-temurin-24 AS build
 
 WORKDIR /app
 
-# Tải trước dependencies để tận dụng Docker cache
+# Tải dependencies trước để tận dụng Docker cache
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
-# Copy toàn bộ mã nguồn
+# Copy mã nguồn
 COPY src ./src
 
-# Build file WAR (tắt log progress để màn hình build gọn gàng)
+# Build file WAR
 RUN mvn clean package -DskipTests --no-transfer-progress
 
-# Stage 2: Runtime với Tomcat 9 tương thích JDK 21+
-FROM tomcat:9.0.12-jre8
-# Xóa các app mặc định của Tomcat
+# Stage 2: Runtime bằng Tomcat 9 và Java 21
+FROM tomcat:9-jdk21-temurin
+
+# Xóa các ứng dụng mặc định của Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy đúng tên file WAR dựa theo project Cart của bạn thành ROOT.war
+# Copy WAR và triển khai tại context root
 COPY --from=build /app/target/ch09_ex1_download-1.0*.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
