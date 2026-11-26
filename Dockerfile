@@ -19,7 +19,7 @@ FROM tomcat:9.0.12-jre8
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy đúng tên file WAR dựa theo project Cart của bạn thành ROOT.war
-COPY --from=build /app/target/Cart*.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=build /app/target/ch09_ex1_download-1.0*.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
